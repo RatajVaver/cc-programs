@@ -7,7 +7,7 @@ term.setCursorPos(6,1)
 term.setTextColor(colors.orange)
 print("BANK CLIENT")
 term.setCursorPos(1,3)
-rednet.open("top")
+rednet.open("back")
 
 function split(message)
 	local args = {}
@@ -34,7 +34,7 @@ for _, val in pairs(prikazy) do
 	line = line + 2
 end
 
-term.setCursorPos(1, line+1)
+term.setCursorPos(1, 6+line)
 write("Prikaz: ")
 
 local input = read()

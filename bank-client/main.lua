@@ -1,3 +1,5 @@
+-- Bank client - Debug command line
+
 term.clear()
 term.setCursorPos(10,1)
 term.setTextColor(colors.orange)

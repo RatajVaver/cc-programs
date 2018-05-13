@@ -8,6 +8,9 @@ for _, dir in pairs(fs.list("/downloads/cc-programs/")) do
 			fs.makeDir("/"..dir)
 		end
 		for _, file in pairs(fs.list("/downloads/cc-programs/"..dir)) do
+			if fs.exists("/"..dir.."/"..file) then
+				fs.delete("/"..dir.."/"..file)
+			end
 			fs.move("/downloads/cc-programs/"..dir.."/"..file, "/"..dir.."/"..file)
 		end
 	end

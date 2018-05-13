@@ -51,7 +51,13 @@ if cmd == "stav" then
 		print("Nepodarilo se zjistit stav uctu!")
 	end
 elseif cmd == "poslat" then
-	if table[2] and table[3] and target = tonumber(table[2]) and amount = tonumber(table[3]) then
+	local target = nil
+	local amount = nil
+	if table[2] and table[3] then
+		target = tonumber(table[2])
+		amount = tonumber(table[3])
+	end
+	if target and amount then
 		rednet.send(BANK_ID, "send "..target.." "..amount, "BANK:4471")
 	
 		local senderId, message, protocol = rednet.receive("BANK:4471", 5)

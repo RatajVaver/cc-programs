@@ -4,10 +4,18 @@ term.setTextColor(colors.orange)
 print("BANK SERVER")
 term.setCursorPos(1,3)
 rednet.open("top")
+
+function string:split(sep)
+	local sep, fields = sep or ":", {}
+	local pattern = string.format("([^%s]+)", sep)
+	self:gsub(pattern, function(c) fields[#fields+1] = c end)
+	return fields
+end
+
 while true do
 	local senderId, message, protocol = rednet.receive("BANK:4471")
 	if message:match(";") then
-		local cmd, arg1, arg2 = split(message, ";")
+		local cmd, arg1, arg2 = unpack(message:split(";"))
 		arg1 = tonumber(arg1)
 		arg2 = tonumber(arg2)
 		local money = 0

@@ -38,6 +38,7 @@ while true do
 			
 			if(cmd == "check")then
 				rednet.send(senderId, money, "BANK:4471")
+				print("Stav: $"..money)
 			elseif(cmd == "send")then
 				if arg1 ~= senderId and fs.exists("bank/"..arg1) and arg2 > 0 and arg2 <= money then
 					local file = fs.open("bank/"..senderId, "w")
@@ -47,10 +48,18 @@ while true do
 					file.write(money + arg2)
 					file.close()
 					rednet.send(senderId, "ok", "BANK:4471")
+					print("Prevedeno $"..money.." ("..senderId.." > "..arg1..")")
 				else
 					rednet.send(senderId, "error", "BANK:4471")
+					print("Error!")
 				end
+			else
+				print("Error!")
 			end
+		else
+			print("Error!")
 		end
+	else
+		print("Error!")
 	end
 end

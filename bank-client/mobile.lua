@@ -19,22 +19,24 @@ end
 
 local prikazy = {
 	{ "stav", "Zkontroluje stav uctu" },
-	{ "poslat [Ucet] [Castka]", "Odesle castku na jiny ucet" },
+	{ "poslat [Ucet] [Castka]", "Odesle castku na ucet" },
 }
 
-write("Seznam prikazu:")
+print("Cislo uctu: "..os.getComputerID())
+print("")
+print("Seznam prikazu:")
 
-local line = 1
+local line = 7
 
 for _, val in pairs(prikazy) do
-	term.setCursorPos(2,4+line)
+	term.setCursorPos(2,line)
 	write(val[1])
-	term.setCursorPos(4,4+line+1)
+	term.setCursorPos(4,line+1)
 	write(val[2])
 	line = line + 2
 end
 
-term.setCursorPos(1, 6+line)
+term.setCursorPos(1, line+2)
 write("Prikaz: ")
 
 local input = read()
